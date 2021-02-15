@@ -1,0 +1,36 @@
+.container {
+    margin: auto;
+    width: 800px;
+    height: 800px;
+    background-color: rgba(107, 107, 95, 0.267);
+}
+
+ul {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+   list-style-type: none;
+   outline: 1px solid black;
+}
+
+.closed {
+    background-color: teal;
+}
+
+.closed:hover {
+    cursor: pointer;
+}
+
+.red-card {
+    background-color: red;
+}
+
+.green-card {
+    background-color: green;
+}
