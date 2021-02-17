@@ -35,7 +35,7 @@ function openCard(e) {
   //проверяем выигрышная ли открыта комбинация или нет
   if (red === 1 && green === 1) {
     closedCard();
-  } else if (red === 2 && green == 2) {
+  } else if (red === 2 && green === 2) {
     h1.innerHTML = "Вы выиграли! Поздравляю!";
   }
 }
