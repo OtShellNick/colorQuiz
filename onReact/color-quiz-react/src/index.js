@@ -33,13 +33,13 @@ class Board extends React.Component {
       <Card className={this.state.cards[i]} onClick={() => this.openCard(i)} />
     );
   }
+
   //метод с основной логикой игры
   openCard(i) {
     let random = Math.round(Math.random());
     const card = this.state.cards.slice();
     //проверка, позволяющая в случае проигрыша останавливать игру, не давая возможность открывать карты
     if (this.state.red === 1 && this.state.green === 1) {
-      return;
     }
     //не позволяет открыть уже открытую карту
     if (card[i] === "red-card" || card[i] === "green-card") {
@@ -66,11 +66,23 @@ class Board extends React.Component {
     } else this.openCard(i);
   }
 
+  retry() {
+    setTimeout(() => {
+      this.setState({
+        cards: this.state.cards.slice().map((e) => (e = "closed")),
+      });
+      this.setState({ red: 0 });
+      this.setState({ green: 0 });
+      this.setState({ status: "Добро пожаловать! Выберите карту." });
+    }, 3000);
+  }
+
   render() {
     //финальная проверка на выигрыш или поражение
     let status = this.state.status;
     if (this.state.red === 1 && this.state.green === 1) {
-      status = "Вы проиграли.";
+      status = `Вы проиграли, попробуйте еще раз.`;
+      this.retry();
     } else if (this.state.red === 2 && this.state.green === 2) {
       status = "Вы выиграли! Поздравляю!";
     }
