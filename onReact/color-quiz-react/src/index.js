@@ -38,9 +38,7 @@ class Board extends React.Component {
   openCard(i) {
     let random = Math.round(Math.random());
     const card = this.state.cards.slice();
-    //проверка, позволяющая в случае проигрыша останавливать игру, не давая возможность открывать карты
-    if (this.state.red === 1 && this.state.green === 1) {
-    }
+
     //не позволяет открыть уже открытую карту
     if (card[i] === "red-card" || card[i] === "green-card") {
       this.setState({
