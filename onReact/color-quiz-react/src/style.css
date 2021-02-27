@@ -34,3 +34,7 @@ li {
 .green-card {
   background-color: green;
 }
+
+.events-none {
+  pointer-events: none;
+}
