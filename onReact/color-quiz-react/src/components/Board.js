@@ -54,15 +54,13 @@ export default function Board() {
 function reducer(state, action) {
   let newState = { ...state };
   let card = [...newState.cards];
-  let arr = [...newState.closedCards];
+  let arrClosedCards = [...newState.closedCards];
   let redCard = card.filter((e) => e === "red-card"); //возвращаем массив красных карт
   let greenCard = card.filter((e) => e === "green-card"); //возвращаем массив зеленых карт
 
   switch (action.type) {
     //проверяем сколько и какие открыты карты
     case "check-opened-cards":
-      console.log(`${redCard.length} красное`);
-      console.log(`${greenCard.length} зеленое`);
       if (redCard.length === 1 && greenCard.length === 1) {
         return {
           ...newState,
@@ -79,20 +77,19 @@ function reducer(state, action) {
       while (j <= 4) {
         j++;
         let random = Math.round(Math.random());
-        console.log(random);
         if (random === 0 && red < 2) {
           red++;
-          arr.push("red-card");
+          arrClosedCards.push("red-card");
         } else if (random === 1 && green < 2) {
           green++;
-          arr.push("green-card");
-        } else if (arr.length < 4 && (red === 2 || green === 2)) {
+          arrClosedCards.push("green-card");
+        } else if (arrClosedCards.length < 4 && (red === 2 || green === 2)) {
           j--;
         }
       }
       return {
         ...newState,
-        closedCards: arr
+        closedCards: arrClosedCards
       };
 
     //говорим что нельзя открыть открытую карту
@@ -122,7 +119,7 @@ function reducer(state, action) {
       }
     //по клику присваиваем элементу массива с картами, элемент с картой из сгенерированного массива соответствующего id карты номера
     case "open":
-      card[action.id] = arr[action.id];
+      card[action.id] = arrClosedCards[action.id];
       return {
         ...newState,
         cards: card
