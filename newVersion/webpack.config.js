@@ -43,7 +43,6 @@ const plugins = () => {
         new MiniCssExtractPlugin({
             filename: filename('css')
         }),
-        new webpack.HotModuleReplacementPlugin(),
     ]
 }
 
@@ -77,6 +76,7 @@ module.exports = {
     },
     devServer: {
         port: 4200,
+        hot: true,
         static: './build'
     },
     module: {
