@@ -1,0 +1,15 @@
+.board {
+  display: flex;
+  width: 425px;
+  margin: 0 auto;
+  padding: 3px;
+  flex-wrap: wrap;
+
+  & .card {
+    margin-bottom: 5px;
+
+    &:not(:nth-child(4n)) {
+      margin-right: 5px;
+    }
+  }
+}

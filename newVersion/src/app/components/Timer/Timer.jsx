@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {GameContext} from "@/context/gameContext";
 
+import './Timer.scss';
+
 export const Timer = () => {
     const [time, setTime] = useState(3);
     const {state, dispatch} = useContext(GameContext);
@@ -19,5 +21,5 @@ export const Timer = () => {
     }, [time]);
 
 
-    return <div>{time > 0 ? `Успейте открыть все карточки за ${time}` : 'Вы проиграли!'}</div>
+    return <div className='timer'>{time > 0 ? `Успейте открыть все карточки за ${time}` : 'Вы проиграли!'}</div>
 }

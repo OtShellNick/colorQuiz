@@ -9,12 +9,19 @@ export const Input = () => {
     const [error, setError] = useState(false);
     const {state, dispatch} = useContext(GameContext);
 
+    const generateCardArray = (length) => {
+        const cardsArr = new Array(length);
+        const count = 0;
+
+    }
+
     return <form
         className='main__form'
         onSubmit={e => {
             e.preventDefault();
             const {target} = e;
-            dispatch({type: 'set-count', count: +target.count.value})
+            generateCardArray(+target.count.value);
+            dispatch({type: 'set-count', count: +target.count.value});
         }}>
 
         <div/>
